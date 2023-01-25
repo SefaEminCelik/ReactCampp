@@ -16,7 +16,7 @@ export default function Navi() {
                     <Menu.Menu position='right'>
                         <CartSummary/>
                         <Menu.Item>
-                            <Button primary>Sign Up</Button>
+                            <Button primary>Sign Sefa</Button>
                         </Menu.Item>
                     </Menu.Menu>
                 </Container>
