@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 import ProductService from '../Services/productService'
 
@@ -8,8 +9,8 @@ export default function ProductList() {
 
   useEffect(() => {
     let productService = new ProductService()
-    productService.getProducts().then(result =>setTechnologies(result.data.data))
-  },[])
+    productService.getProducts().then(result => setTechnologies(result.data.data))
+  }, [])
 
   return (
     <div>
@@ -24,7 +25,7 @@ export default function ProductList() {
           {
             technologies.map((technology) => (
               <Table.Row key={technology.technologyId}>
-                <Table.Cell>{technology.technologyName}</Table.Cell>
+                <Table.Cell><Link to={`/products/${technology.technologyId}`}>{technology.technologyName}</Link></Table.Cell>
                 <Table.Cell>{technology.language.languageName}</Table.Cell>
               </Table.Row>
             ))

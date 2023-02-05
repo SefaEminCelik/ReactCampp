@@ -6,4 +6,9 @@ export default class ProductService{
         return axios.get("http://localhost:8080/api/tecnologies/getall")
     }
 
+    getProductById(technologyId){
+        return axios.get("http://localhost:8080/api/tecnologies/getbyid?id=" + technologyId)
+    }
+    
+
 }
