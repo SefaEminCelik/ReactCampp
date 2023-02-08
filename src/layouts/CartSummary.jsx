@@ -1,8 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Dropdown} from 'semantic-ui-react'
 export default function CartSummary() {
   return (
+
     <div>
       <Dropdown item text='Sepetiniz'>
         <Dropdown.Menu>
