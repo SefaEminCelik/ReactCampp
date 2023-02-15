@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useDebugValue } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 import ProductService from '../Services/productService'
 
 export default function ProductList() {
+
+  useDispatch
 
   const [technologies, setTechnologies] = useState([])
 
