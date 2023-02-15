@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useDebugValue } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import { Button, Icon, Label, Menu, Table } from 'semantic-ui-react'
 import ProductService from '../Services/productService'
+import { AddtoCart } from "../store/actions/cartActions"
+import {toast} from "react-toastify"
 
 export default function ProductList() {
 
-  useDispatch
+  const dispatch = useDispatch()
 
   const [technologies, setTechnologies] = useState([])
 
@@ -15,6 +17,11 @@ export default function ProductList() {
     productService.getProducts().then(result => setTechnologies(result.data.data))
   }, [])
 
+  const handleAddtoCart = (technology) => {
+    dispatch(AddtoCart(technology))
+    toast.success(`${technology.technologyName}Sepete Eklendi!`)
+  }
+
   return (
     <div>
       <Table celled>
@@ -22,6 +29,7 @@ export default function ProductList() {
           <Table.Row>
             <Table.HeaderCell>Teknoloji Adı</Table.HeaderCell>
             <Table.HeaderCell>Dil Adı</Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -30,6 +38,7 @@ export default function ProductList() {
               <Table.Row key={technology.technologyId}>
                 <Table.Cell><Link to={`/products/${technology.technologyId}`}>{technology.technologyName}</Link></Table.Cell>
                 <Table.Cell>{technology.language.languageName}</Table.Cell>
+                <Table.Cell><Button onClick={handleAddtoCart(technology)}>Sepete Ekle</Button></Table.Cell>
               </Table.Row>
             ))
           }
